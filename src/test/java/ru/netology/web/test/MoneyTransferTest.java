@@ -21,7 +21,7 @@ class MoneyTransferTest {
 
     @BeforeEach
     public void setupAndCheckBalance() {
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         var loginPage = open("http://localhost:9999", LoginPageV3.class);
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);
@@ -34,7 +34,7 @@ class MoneyTransferTest {
 
     @AfterEach
     public void returnBalance() throws InterruptedException {
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         var loginPage = open("http://localhost:9999", LoginPageV3.class);
         var authInfo = DataHelper.getAuthInfo();
         var verificationPage = loginPage.validLogin(authInfo);

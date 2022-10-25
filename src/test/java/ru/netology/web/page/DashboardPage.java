@@ -5,7 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.val;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -18,12 +17,10 @@ public class DashboardPage {
     private final String cardIdStart = "**** **** **** ";
     private final String cardIdFinish = ", баланс:";
     HashMap<String, Integer> balanceMap = new HashMap<>();
-//    String cardId = "0001";
 
     public DashboardPage() {
         heading.shouldBe(visible);
         makeBalance();
-//        clickButton(cardId);
     }
 
     public void makeBalance() {
@@ -31,21 +28,9 @@ public class DashboardPage {
         ) {
             balanceMap.put(extractCardId(card.text()), extractBalance(card.text()));
         }
-//        System.out.println("баланс карты 0001 = " + getCardBalance("0001"));
-//        System.out.println("баланс карты 0002 = " + getCardBalance("0002"));
-
-//        for (Map.Entry<String, Integer> pair : balanceMap.entrySet()) {
-//            String key = pair.getKey();
-//            int value = pair.getValue();
-//            System.out.println(key + ":" + value);
-//        }
     }
 
     public int getCardBalance(String id) {
-        // TODO: перебрать все карты и найти по атрибуту data-test-id
-        //val text = cards.get(0).text();
-        //val text = balanceMap.get(id).text();
-
         return balanceMap.get(id);
     }
 
@@ -69,4 +54,3 @@ public class DashboardPage {
         return new TransferPage();
     }
 }
-// ЗАГОТОВКА ДЛЯ КНОПКИ!!! $x("//div[contains(text(),'0001')]/button[@role='button']").click();
